@@ -1,0 +1,15 @@
+.main_container {
+    width: 1440px;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    gap: 20px;
+    .main_inner_bottom{
+        width: 800px;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+    }
+}

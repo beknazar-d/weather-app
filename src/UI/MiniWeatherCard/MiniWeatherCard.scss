@@ -1,0 +1,26 @@
+.small_wcard{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: 143px;
+    color: white;
+    background-image: url('../bg-today-small.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    .small_card_top{
+        width: 100%;
+        height: 50%;
+        font-size: 26px;
+        text-align: start;
+        padding-left: 20px;
+    }
+    .small_card_bottom{
+        width: 100%;
+        height: 50%;
+        font-size: 28px;
+        text-align: start;
+        padding-left: 20px;
+    }
+}
