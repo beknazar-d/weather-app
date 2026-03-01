@@ -4,12 +4,97 @@
     display: flex;
     margin: 0 auto;
     flex-direction: column;
-    gap: 20px;
-    .main_inner_bottom{
-        width: 800px;
+    color: white;
+    margin-bottom: 20px;
+    .main_header{
+        width: 100%;
         height: auto;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 25px;
+        position: relative;
+        margin-bottom: 20px;
+        .header_top{
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .header_dropdown{
+                border: 1px solid rgb(149, 129, 129,0.5);
+                border-radius: 5px;
+                background-color: rgb(241, 233, 233,0.1);
+                align-content: center;
+                padding: 0 5px;
+                img{
+                    transform: rotateY('angle');
+                }
+            }
+            img{
+                background-color: none;
+                
+            }
+            button{
+                background:none;
+                border: none;
+                padding: 0 6px;
+                margin: 0;
+            }
+            span{
+                font-size: 16px;
+            }
+            
+        }
+        .header_text{
+            font-size: 38px;
+            color: white;
+        }
+
     }
+    .main_body{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        .body_search{
+            width: 100%;
+            height: auto;
+            padding-left: 30%;
+            margin-bottom: 30px;
+        }
+        .body_cards{
+            display: flex;
+            flex-direction: row;
+                .weather_cards{
+                    display: flex;
+                    flex-direction: column;
+                    justify-items: center;
+                    align-items: center;
+                    padding-left: 100px;
+                    gap: 15px;
+                    width: 70%;
+                    .main_footer{
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        padding-left: 60px;
+                    }
+                    .mini_cards{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 10px;
+                        align-items: center;
+                        
+                    }
+                }
+                .weather_list{
+                    width: 30%; 
+                    display: flex;
+                    li{
+                        list-style: none;
+                    }
+                }
+            }
+        
+    }
+    
 }

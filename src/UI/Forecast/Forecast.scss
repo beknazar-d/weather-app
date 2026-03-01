@@ -1,0 +1,76 @@
+.hourly_forecast {
+    width: 400px;
+    height: 600px;
+    position: relative;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255,0.1);
+    margin-bottom: 20px;
+    .forecast_header{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+        .day_selector{
+            width: 100px;
+            height: 40px;
+            position: relative;
+            border-radius: 5px;
+            background-color: rgb(255, 255, 255,0.1);
+            align-content: center;
+            .selector_btn{
+                border: none;
+                background: none;
+                height: 100%;
+                cursor: pointer;
+                }
+            }
+        }
+
+        .forecast_content{
+            height: auto;
+            width: 100%;
+            .list_wrapper{
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+        h3{
+            font-size: 16px;
+        }
+    }
+}
+
+.forecast_list_item{
+    width: 350px;
+    height: 60px;
+    position: relative;
+    display: flex;
+    background-color: rgb(255, 255, 255,0.3);
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    background: rgb(255, 255, 255,0.15);
+    img{
+        width: 40px;
+        height: 40px;
+    }
+    .list_item_left{
+        width: 150px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        
+    }
+    .list_item_grad{
+        float: right;
+        width: 100px;
+        height: 100%;
+        padding: 20px 0;
+    }
+}

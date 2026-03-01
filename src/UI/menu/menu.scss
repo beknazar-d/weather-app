@@ -1,0 +1,56 @@
+.dropdown_menu{
+    width: 230px;
+    height: auto;
+    position: absolute;
+    background-color: rgb(33, 8, 70);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    right: 0;
+    top: 70px;
+    z-index: 2;
+    h4{
+        margin: 0;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-left: 10px;
+        hr{
+            margin-left: 5px;
+            width: 210px;
+            border: 0.7px solid rgba(255, 255, 255, 0.4);
+            &:last-child{
+                display: none;
+            }
+        }
+        
+        span{
+            text-align: start;
+            color: rgb(255, 255, 255,0.3);
+            margin-bottom: 15px;
+        }
+
+        li{
+            display: flex;
+            height: 40px;
+            flex-direction: column;
+            text-align: start;
+            background: none;
+            margin-bottom: 5px;
+            padding: 9px 0 0 0;
+            border: 1px solid transparent; /* чтобы не сдвигать layout при hover */
+            &:hover{
+                background-color: rgb(240, 240, 240,0.1);
+                border-radius: 4px;
+                cursor: pointer;
+                transition: border-color .15s ease;
+            }
+        }
+    }
+}
+.hide{
+    display: none;
+}

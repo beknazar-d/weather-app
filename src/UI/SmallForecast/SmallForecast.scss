@@ -1,0 +1,33 @@
+.small_forecast{
+    width: 100px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color:  white;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255,0.1);
+    border: 1px solid rgb(0, 0, 0,0.2);
+    border-radius: 6px;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 10px 5px ;
+    span{
+
+    }
+    img{
+        width: 40px;
+        height: 40p;
+
+    }
+    .small_forecast_footer{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}
