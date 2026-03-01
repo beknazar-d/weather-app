@@ -98,3 +98,7 @@
     }
     
 }
+.header_dropdown .rotate {
+    rotate: x 180deg;
+    transition: rotate 0.3s ease;
+}

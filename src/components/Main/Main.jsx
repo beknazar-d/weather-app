@@ -22,9 +22,9 @@ const Main =()=>{
             <div className='header_top'>
               <img src={logo} alt="logo" />
               <div className='header_dropdown'>
-                <button><img src={units} alt="units" /></button>
+                <button><img  src={units} alt="units" /></button>
                 <span>Units</span>
-                <button onClick={()=>{setShow(show=>!show)}}><img src={arrow} alt="arrow-down" /></button>
+                <button onClick={()=>{setShow(show=>!show)}}><img className={show?'rotate':''} src={arrow} alt="arrow-down" /></button>
                 <Menu show={show}/>
               </div>
             </div>
