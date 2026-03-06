@@ -9,7 +9,7 @@ const WCard =({location,data,img,grad})=>{
             </div>
             <div className='weather_card_right'>
                 <img src={sunny} alt="sun" />
-                <span>{grad?grad:'20°'}</span>
+                <span>{grad?`${grad}°`:'20°'}</span>
             </div>
         </div>
     )

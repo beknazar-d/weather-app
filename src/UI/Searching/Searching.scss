@@ -51,3 +51,38 @@
         margin-left: 10px;
     }
 }
+
+.result_container{
+    width: 526px;
+    height: auto;
+    position: absolute;
+    background-color: #262540;
+    border: 1px solid #302F4A;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display:  flex;
+    flex-direction: column;
+    color: white;
+    z-index: 2;
+    top: 50px;
+}
+
+.city_option{
+    width: 510px;
+    height: 39px;
+    padding: 10px 8px;
+    text-align: start;
+    border-radius: 8px;
+    background: none;
+    span{
+        font-size: 16px;
+
+    }
+}
+.city_option:hover{
+    background-color: #302F4A;
+    border: 1px solid #3C3B5E;
+}
+.close{
+    display: none;
+}

@@ -14,27 +14,27 @@ const Menu = ({show}) => {
     const toggleOption = (option) => {
     setSelected((prev) =>
     prev.includes(option)
-      ? prev.filter((i) => i !== option) // убрать
-      : [...prev, option]                 // добавить
+        ? prev.filter((i) => i !== option) 
+        : [...prev, option]                
     );
 };
 const chooseOption = (group, option) => {
-  setSelected(prev => ({
+    setSelected(prev => ({
     ...prev,
     [group]: option,
-  }));
+    }));
 };
     return (
         <div className={show?'dropdown_menu open':'dropdown_menu'}>
                 <h4>Switch to Imperial</h4>
-            <ul>
+            <ul className='dropdown_list_wrapper'>
                 {
                 listOfMenu.map((item) => {
                 const group = Object.keys(item)[0];      
                 const options = item[group];          
 
             return (
-                <div key={group}>
+                <div className='dropdown_inner_container' key={group}>
                 <span>{group}</span>
 
                     {options.map((option) => (
