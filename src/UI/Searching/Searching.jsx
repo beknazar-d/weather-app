@@ -1,9 +1,9 @@
 import './Searching.scss';
 import lupa from '../../UI/icon-search.svg';
-import { fetchCity, selectCityResults, setCity, selectedCity } from '../../weatherSlice';
+import { fetchCity, selectCityResults, setCity, selectCityStatus } from '../../weatherSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect,useRef } from 'react';
-
+import { useState, useEffect, useRef } from 'react';
+import loading from '../icon-loading.svg';
 const SearchItem = ({ name, country, onClick }) => {
     return (
         <div className='city_option' onClick={onClick}>
@@ -16,8 +16,10 @@ const Searching = () => {
     const [name, setName] = useState('');
     const dispatch = useDispatch();
     const cityName = useSelector(selectCityResults);
-    const city = useSelector(selectedCity);
+    const cityFetchingStatus = useSelector(selectCityStatus);
     const lastSearch = useRef('');
+
+
     const fetchName = (value) => {
         dispatch(fetchCity(value));
     };
@@ -28,21 +30,33 @@ const Searching = () => {
         dispatch(setCity(one));
         setName('');
     };
-    useEffect(() => {
 
-        const correct= name.trim();
+    useEffect(() => {
+        const correct = name.trim();
         if (correct.length < 3) return;
-        if(correct===lastSearch.current) return;
+        if (correct === lastSearch.current) return;
         const timer = setTimeout(() => {
-            lastSearch.current=correct;
+            lastSearch.current = correct;
             dispatch(fetchCity(correct));
         }, 500);
-
         return () => clearTimeout(timer);
+    }, [name,dispatch]);
 
-    }, [name]);
 
-
+    const searchingItems = cityName?.results?.map((item) => (
+        <SearchItem
+            key={item.id}
+            name={item.name}
+            country={item.country}
+            onClick={() => selectOneCity(item.id)}
+        />
+    ))
+    const loadingImg = (
+        <div className='loading_container'>
+            <img className='loading_icon' src={loading} alt="loading-icon" />
+            <span className='loading_text'>Searching in progress ...</span>
+        </div>
+    )
     return (
         <div className='searching_place'>
             <div className='search_icon'>
@@ -69,14 +83,7 @@ const Searching = () => {
             </button>
 
             <div className={name ? 'result_container' : 'close'}>
-                {cityName?.results?.map((item) => (
-                    <SearchItem
-                        key={item.id}
-                        name={item.name}
-                        country={item.country}
-                        onClick={() => selectOneCity(item.id)}
-                    />
-                ))}
+                {cityFetchingStatus === 'loading' ? loadingImg : searchingItems}
             </div>
         </div>
     );

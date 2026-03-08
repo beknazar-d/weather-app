@@ -1,0 +1,51 @@
+.main_header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+    margin-bottom: 20px;
+
+    .header_top {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .header_dropdown {
+            width: 119px;
+            height: 43px;
+            border: 1px solid rgb(149, 129, 129, 0.5);
+            border-radius: 8px;
+            background-color: #262540;
+            align-content: center;
+            padding: 0 5px;
+
+            img {
+                transform: rotateY('angle');
+            }
+        }
+
+        button {
+            background: none;
+            border: none;
+            padding: 0 6px;
+            margin: 0;
+        }
+
+        span {
+            font-size: 16px;
+        }
+    }
+
+    .header_text {
+        font-size: 38px;
+        color: white;
+    }
+}
+
+.header_dropdown .rotate {
+    rotate: x 180deg;
+    transition: rotate 0.3s ease;
+}

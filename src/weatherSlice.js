@@ -1,25 +1,51 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
-
+const Osh = {
+  admin1: "Osh Region",
+  admin1_id: 1346798,
+  country: "Kyrgyzstan",
+  country_code: "KG",
+  country_id: 1527747,
+  elevation: 988,
+  feature_code: "PPLA",
+  id: 1527534,
+  latitude: 40.52828,
+  longitude: 72.7985,
+  name: "Osh",
+  population: 322164,
+  timezone: "Asia/Bishkek"
+};
 const initialState = {
     cityForecast:null,
     cityResults:[],
-    selectedCity:null,
-    status:'idle',
-    error:null
+    selectedCity:Osh,
+    
+    status:{
+        city:'idle',
+        weather:'idle'
+    },
+    error:{
+        city:null,
+        weather:null
+    }
 }
+
+const cord={
+    latitude:'40.52828',
+    longitude:'72.7985'
+}
+
+
 
 export const fetchWeather = createAsyncThunk('weather/fetchWeather',async(coords)=>{
     const { latitude, longitude } = coords;
-    const res = await fetch(
-`https://api.open-meteo.com/v1/forecast
-?latitude=${latitude}
-&longitude=${longitude}
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast
+?latitude=${latitude?latitude:cord.latitude}
+&longitude=${longitude?longitude:cord.longitude}
 &current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,weather_code
 &hourly=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation_probability,weather_code
 &daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code
-&timezone=auto`
-);
+&timezone=auto`);
     const data = await res.json();
     return data
 });
@@ -40,29 +66,29 @@ const weatherSlice = createSlice({
     },
     extraReducers:(builder)=>{
         builder.addCase(fetchWeather.pending,(state)=>{
-            state.status = 'loading';
-            state.error = null;
+            state.status.weather = 'loading';
+            state.error.weather = null;
         })
         .addCase(fetchWeather.fulfilled,(state,action)=>{
-            state.status = 'succeeded';
+            state.status.weather = 'succeeded';
             state.cityForecast =action.payload;
 
         })
         .addCase(fetchWeather.rejected,(state,action)=>{
-            state.status = 'failed';
-            state.error = action.error?.message||'Error';
+            state.status.weather = 'failed';
+            state.error.weather = action.error?.message||'Error';
         })
         .addCase(fetchCity.pending,(state)=>{
-            state.status = 'loading';
-            state.error = null;
+            state.status.city = 'loading';
+            state.error.city = null;
         })
         .addCase(fetchCity.fulfilled,(state,action)=>{
-            state.status = 'succeeded';
+            state.status.city = 'succeeded';
             state.cityResults = action.payload;
         })
         .addCase(fetchCity.rejected,(state,action)=>{
-            state.status='failed';
-            state.error=action.error?.message||'Error';
+            state.status.city='failed';
+            state.error.city=action.error?.message||'Error';
         })
     }
 });
@@ -74,6 +100,7 @@ export const {setCity} = weatherSlice.actions;
 export const selectCityForecast = (state) => state.weather.cityForecast;
 export const selectCityResults = (state) => state.weather.cityResults;
 export const selectedCity =(state) =>state.weather.selectedCity;
-export const selectWeatherStatus = (state) => state.weather.status;
-export const selectWeatherError = (state) => state.weather.error;
+export const selectWeatherStatus = (state) => state.weather.status.weather;
+export const selectWeatherError = (state) => state.weather.error.weather;
+export const selectCityStatus = (state) => state.weather.status.city;
 

@@ -2,27 +2,57 @@ import './Forecast.scss';
 import dropdown from '../icon-dropdown.svg';
 import sunny from '../icon-sunny.webp';
 import { useState } from 'react';
-export const WeatherItem =()=>{
+import useWeatherData from '../../hooks/useWeatherData.js';
+import { selectedCity } from '../../weatherSlice.js';
+import { useSelector } from 'react-redux';
+import cloud from '../icon-storm.webp';
+import fog from '../icon-fog.webp';
+import snow from '../icon-snow.webp';
+import rain from '../icon-drizzle.webp';
+import overcast from '../icon-overcast.webp';
+import partlycloudy from '../icon-partly-cloudy.webp';
+import storm from '../icon-storm.webp';
+
+export const WeatherItem =({time,grad,code})=>{
+
+    const getWeatherIcon = (code) => {
+        if (code === 0) return sunny;
+        if (code >= 1 && code <= 3) return overcast;
+        if (code === 2) return partlycloudy;
+        if (code >= 61 && code <= 67) return rain;
+        if (code === 45 || code === 48) return fog;
+        if (code >= 71 || code || code <= 75) return snow;
+        if (code >= 95) return storm;
+        return cloud;
+    };
     return(
         <div className='forecast_list_item'>
             <div className='list_item_left'>
-            <img src={sunny} alt="cloud" />
-            <span>3PM</span>
+            <img src={getWeatherIcon(code)} alt="cloud" />
+            <span>{time?time:null}</span>
             </div>
-            <span className='list_item_grad'>60°</span>
+            <span className='list_item_grad'>{grad?grad:null}60°</span>
         </div>
     )
 };
-const days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-const DayList = ({show})=>{
+
+
+
+const DayList = ({setShow,show,setActiveDay})=>{
+    const city = useSelector(selectedCity);
+    const {daysOfWeek} = useWeatherData(city);
 
     return(
     <div className={show?'day_list open':'day_list'}>
             <ul className='inner_list'>
                 {
-                    days.map(item=>{
+                    Object.keys(daysOfWeek)?.map(item=>{
                         return(
-                            <li className='day_name' key={item}>{item}</li>
+                            <li onClick={(e)=>{
+                                
+                                setActiveDay(item);
+                                setShow(false);
+                            }} className='day_name' key={item}>{item}</li>
                         )
                     })
                 }
@@ -32,23 +62,24 @@ const DayList = ({show})=>{
 };
 
 
-const Forecast =(props)=>{
-    const arrs=[1,2,3,4,5,6,7];
+
+const Forecast =({activeDay,setActiveDay,children,data})=>{
     const [show,setShow]=useState(false);
+
 
     return(
         <div className='hourly_forecast'>
-            <DayList show={show}/>
+            <DayList setShow={setShow} setActiveDay={setActiveDay} show={show}/>
                 <section className='forecast_header'>
                         <h3>Hourly forecast</h3>
                         <div className='day_selector'>
-                            <span>Monday</span>
+                            <span>{activeDay}</span>
                             <button onClick={()=>{setShow(show=>!show)}} className='selector_btn'><img className={show?'rotate':''} src={dropdown} alt="dropdown" /></button>
                         </div>
                 </section>
                 <section className='forecast_content'>
                 <ul className='list_wrapper'>
-                    {props.children}
+                    {children}
                 </ul>
                 </section>
         </div>

@@ -1,10 +1,11 @@
 .hourly_forecast {
     width: 400px;
-    height: 600px;
+    height: 693px;
     position: relative;
     border-radius: 10px;
     background-color:#302F4A;
     margin-bottom: 20px;
+    overflow-y: scroll;
     .forecast_header{
         width: 100%;
         height: auto;
