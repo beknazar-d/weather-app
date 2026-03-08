@@ -9,7 +9,9 @@ const WeatherSidebar = ({data,setActiveDay,activeDay}) => {
         return item.code
     }) 
 
-
+    const dataTemp = data.map((item)=>{
+        return item.temp;
+    })
     
 const newData = data.map((item)=>{
     return new Date(item.time).toLocaleTimeString('en-US',{
@@ -27,7 +29,7 @@ const newData = data.map((item)=>{
             data={data}
             >
                 {newData.map((item,i) => (
-                    <li key={i}><WeatherItem time={item} code={dataCode[i]}/></li>
+                    <li key={i}><WeatherItem time={item} code={dataCode[i]} grad={dataTemp[i]} /></li>
                 ))}
             </Forecast>
         </div>

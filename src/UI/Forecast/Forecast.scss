@@ -6,9 +6,42 @@
     background-color:#302F4A;
     margin-bottom: 20px;
     overflow-y: scroll;
+
+    // Webkit (Chrome, Safari, Edge)
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        margin: 10px 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        transition: background 0.3s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        &:active {
+            background: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    // Firefox
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
     .forecast_header{
         width: 100%;
         height: auto;
+        position: sticky;  
+        top: 0;
+        background-color:#302F4A;
+        z-index: 2;
         display: flex;
         flex-direction:row;
         justify-content: space-between;

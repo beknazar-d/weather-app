@@ -18,7 +18,7 @@ const Main = () => {
   const [activeDay,setActiveDay] = useState('Monday');
   const activeDayData = daysOfWeek[activeDay] || [];
 
-
+  
   return (
     <div className='main_container'>
       <WeatherHeader />

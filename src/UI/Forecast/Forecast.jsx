@@ -31,7 +31,7 @@ export const WeatherItem =({time,grad,code})=>{
             <img src={getWeatherIcon(code)} alt="cloud" />
             <span>{time?time:null}</span>
             </div>
-            <span className='list_item_grad'>{grad?grad:null}60°</span>
+            <span className='list_item_grad'>{grad?grad:null}°</span>
         </div>
     )
 };
