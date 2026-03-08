@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWeather, selectCityForecast } from '../weatherSlice';
+import { fetchWeather, selectCityForecast,selectWeatherMode } from '../weatherSlice';
 
 const useWeatherData = (city) => {
     const dispatch = useDispatch();
     const cityForecast = useSelector(selectCityForecast);
-
+    const mode = useSelector(selectWeatherMode);
 
     useEffect(() => {
         if (!city) return;
-        const coords = { latitude: city.latitude, longitude: city.longitude };
-        dispatch(fetchWeather(coords));
-    }, [city, dispatch]);
+    
+        dispatch(fetchWeather({latitude:city.latitude,longitude:city.longitude,imperialMode:mode}));
+    }, [city, dispatch,mode]);
 
 
     const { current } = cityForecast || {};
@@ -25,6 +25,8 @@ const useWeatherData = (city) => {
         year: 'numeric'
     });
 
+    console.log(cityForecast);
+    
 
     const hourlyByDay = {};
     cityForecast?.hourly.time.forEach((time, i) => {

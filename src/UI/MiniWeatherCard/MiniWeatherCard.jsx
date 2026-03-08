@@ -1,11 +1,9 @@
 import './MiniWeatherCard.scss';
-import { selectCityForecast } from '../../weatherSlice';
-import { useSelector } from 'react-redux';
+
 
 const MiniWCard=({header,grad})=>{
 
-    const data = useSelector(selectCityForecast);
-    const {current}=data || {};
+
 
     
 

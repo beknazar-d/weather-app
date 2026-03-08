@@ -1,8 +1,14 @@
 import './menu.scss';
 import checkmark from '../icon-checkmark.svg';
 import { useState } from 'react';
+import {setMode,selectWeatherMode} from '../../weatherSlice';
+import { useSelector,useDispatch } from 'react-redux';
 
 const Menu = ({show}) => {
+
+    const mode = useSelector(selectWeatherMode);
+    const dispatch = useDispatch();
+    const [imperialMode,setImperialMode] = useState(false);
     const listOfMenu = [
         { Temperature: ['Celsius(°C)', 'Fahrenheit(°F)'] },
         { WindSpeed: ['km/h', 'mph'] },
@@ -26,7 +32,12 @@ const chooseOption = (group, option) => {
 };
     return (
         <div className={show?'dropdown_menu open':'dropdown_menu'}>
-                <h4>Switch to Imperial</h4>
+                <h4 onClick={
+                    ()=>{
+                        setImperialMode(!imperialMode)
+                        dispatch(setMode(imperialMode))
+                    }
+                }>{mode?'Switch to Metric':'Switch to Imperial'}</h4>
             <ul className='dropdown_list_wrapper'>
                 {
                 listOfMenu.map((item) => {

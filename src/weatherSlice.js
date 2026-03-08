@@ -19,7 +19,7 @@ const initialState = {
     cityForecast:null,
     cityResults:[],
     selectedCity:Osh,
-    
+    imperialMode:false,
     status:{
         city:'idle',
         weather:'idle'
@@ -35,17 +35,31 @@ const cord={
     longitude:'72.7985'
 }
 
+/* const res = await fetch(); */
 
-
-export const fetchWeather = createAsyncThunk('weather/fetchWeather',async(coords)=>{
-    const { latitude, longitude } = coords;
-    const res = await fetch(`https://api.open-meteo.com/v1/forecast
-?latitude=${latitude?latitude:cord.latitude}
-&longitude=${longitude?longitude:cord.longitude}
+export const fetchWeather = createAsyncThunk('weather/fetchWeather',async({latitude,longitude,imperialMode})=>{
+    // const { latitude, longitude } = coords;
+    const imperialFetch=`https://api.open-meteo.com/v1/forecast
+?latitude=${latitude ? latitude : cord.latitude}
+&longitude=${longitude ? longitude : cord.longitude}
 &current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,weather_code
 &hourly=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation_probability,weather_code
 &daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code
-&timezone=auto`);
+&timezone=auto
+&temperature_unit=fahrenheit
+&wind_speed_unit=mph
+&precipitation_unit=inch`;
+
+    const metricFetch=`https://api.open-meteo.com/v1/forecast
+?latitude=${latitude ? latitude : cord.latitude}
+&longitude=${longitude ? longitude : cord.longitude}
+&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation,weather_code
+&hourly=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,precipitation_probability,weather_code
+&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code
+&timezone=auto
+&wind_speed_unit=kmh`
+
+    const res = await fetch(imperialMode?imperialFetch:metricFetch);
     const data = await res.json();
     return data
 });
@@ -62,6 +76,9 @@ const weatherSlice = createSlice({
     reducers:{
         setCity:(state,action)=>{
             state.selectedCity=action.payload
+        },
+        setMode:(state,action)=>{
+            state.imperialMode=action.payload
         }
     },
     extraReducers:(builder)=>{
@@ -96,11 +113,12 @@ const weatherSlice = createSlice({
 
 export default weatherSlice.reducer;
 
-export const {setCity} = weatherSlice.actions;
+export const {setCity,setMode} = weatherSlice.actions;
 export const selectCityForecast = (state) => state.weather.cityForecast;
 export const selectCityResults = (state) => state.weather.cityResults;
 export const selectedCity =(state) =>state.weather.selectedCity;
 export const selectWeatherStatus = (state) => state.weather.status.weather;
 export const selectWeatherError = (state) => state.weather.error.weather;
 export const selectCityStatus = (state) => state.weather.status.city;
+export const selectWeatherMode = (state)=> state.weather.imperialMode;
 
