@@ -9,13 +9,19 @@ const WeatherHeader = () => {
     const [show, setShow] = useState(false);
 
     return (
-        <section className='main_header'>
+        <section onClick={(e)=>{
+            setShow(false)
+        }} className='main_header'>
             <div className='header_top'>
-                <img src={logo} alt="logo" />
+                <img className='header_logo'
+                 src={logo} alt="logo" />
                 <div className='header_dropdown'>
-                    <button><img src={units} alt="units" /></button>
+                    <button onClick={(e) => {
+                        e.stopPropagation();
+                        setShow(show => !show)}}
+                        ><img className={show ? 'wheel' : 'backspin'}     src={units} alt="units" /></button>
                     <span>Units</span>
-                    <button onClick={() => setShow(show => !show)}>
+                    <button >
                         <img className={show ? 'rotate' : ''} src={arrow} alt="arrow-down" />
                     </button>
                     <Menu show={show} />

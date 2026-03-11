@@ -23,11 +23,11 @@ const SmallForecast = ({ min, max, day, code }) => {
 
     return (
         <div className='small_forecast'>
-            <span>{day ? day : 'Нет данных'}</span>
+            <span>{day ? day.slice(0,3) : 'Нет данных'}</span>
             <img src={getWeatherIcon(code)} alt="cloud" />
             <footer className='small_forecast_footer'>
-                <span>{min ? min : 'нет данных'}°</span>
-                <span>{max ? max : 'Нет данных'}°</span>
+                <span>{min ? Math.floor(min) : 'нет данных'}°</span>
+                <span>{max ? Math.floor(max) : 'Нет данных'}°</span>
             </footer>
         </div>
     )

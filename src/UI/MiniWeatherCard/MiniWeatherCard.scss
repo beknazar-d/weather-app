@@ -24,3 +24,19 @@
         padding-left: 20px;
     }
 }
+@media (max-width:1024px) {
+    .small_wcard{
+        width: 165px;
+        height: 118px;
+        border-radius: 12px;
+        .small_card_bottom{
+            font-size: 32px;
+        }
+    }
+}
+@media (max-width:768px) {
+    .small_wcard{
+        width: 163px;
+        height: 118px;
+    }
+}

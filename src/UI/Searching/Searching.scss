@@ -100,14 +100,24 @@
     gap: 20px;
     align-items: center;
     .loading_icon {
-        animation: spin 1s linear infinite;
+        animation: spin1 1s linear infinite;
         width: 20px;
         height: 29px;
     }
 }
 
 
-@keyframes spin {
+@keyframes spin1 {
     from { rotate: 0deg; }
     to   { rotate: 360deg; }
+}
+
+@media (max-width:1024px) {
+    
+}
+
+@media (max-width:768px) {
+    .searching_place{
+        width: 350px;
+    }
 }

@@ -31,3 +31,15 @@
     }
 
 }
+@media (max-width:1024px) {
+    .small_forecast{
+        width: 84.14px;
+        height: 174px;
+    }
+}
+@media (max-width:768px) {
+    .small_forecast{
+        width: 103px;
+        height: 174px;
+    }
+}

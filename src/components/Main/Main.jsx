@@ -1,6 +1,6 @@
 import './Main.scss';
 import { useSelector } from 'react-redux';
-import { selectedCity, selectCityResults } from '../../weatherSlice';
+import { selectedCity } from '../../weatherSlice';
 import useWeatherData from '../../hooks/useWeatherData';
 import WeatherHeader from '../WeatherHeader/WeatherHeader';
 import WeatherStats from '../WeatherStats/WeatherStats';
@@ -8,15 +8,19 @@ import WeatherSidebar from '../WeatherSidebar/WeatherSidebar';
 import WCard from '../../UI/WeatherCard/WeatherCard';
 import DailyForecast from '../DailyForecast/DailyForecast';
 import Searching from '../../UI/Searching/Searching';
-import { useState } from 'react';
+import { useState,useMemo } from 'react';
 
 const Main = () => {
   
   const city = useSelector(selectedCity);
   const { daysOfWeek,current, formatted, currentTP } = useWeatherData(city);
-
   const [activeDay,setActiveDay] = useState('Monday');
-  const activeDayData = daysOfWeek[activeDay] || [];
+
+
+const activeDayData = useMemo(() => {
+  return daysOfWeek[activeDay] || [];
+}, [daysOfWeek, activeDay]);
+
 
   
   return (
@@ -28,7 +32,7 @@ const Main = () => {
         </div>
         <div className='body_cards'>
           <div className='weather_cards'>
-            <WCard grad={currentTP} data={formatted} location={`${city ? city.name : 'Choose location'},${city ? city.country : 'enter city name'}`} />
+            <WCard grad={currentTP} img={current.weather_code} data={formatted} location={`${city ? city.name : 'Choose location'},${city ? city.country : 'enter city name'}`} />
             <WeatherStats current={current} />
             <section className='main_footer'>
               <DailyForecast />

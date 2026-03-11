@@ -66,7 +66,7 @@
             justify-content: space-between;
             margin-bottom: 5px;
             padding: 9px 5px 0 0;
-            border: 1px solid transparent; /* чтобы не сдвигать layout при hover */
+            border: 1px solid transparent;
             &:hover{
                 background-color: rgb(240, 240, 240,0.1);
                 border-radius: 4px;
@@ -88,4 +88,14 @@
     z-index: 10;
     transform: scaleY(1);
 
+}
+
+@media (max-width:1024px) {
+    .dropdown_menu{
+        height: 430px;
+        top: 100px;
+        h4{
+            margin-top: 10px;
+        }
+    }
 }

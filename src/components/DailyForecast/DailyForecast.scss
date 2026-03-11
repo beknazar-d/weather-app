@@ -15,3 +15,26 @@
         gap: 15px;
     }
 }
+@media (max-width:1024px) {
+    .daily_forecast{
+        position: relative;
+        align-items: center;
+        h2{
+            width: 100%;
+            padding-left: 35px;
+        }
+        .daily_weather_cards{
+            gap: 16px;
+            
+        }
+    }
+}
+@media (max-width:768px) {
+    .daily_forecast{
+        width: 375px;
+        .daily_weather_cards{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
