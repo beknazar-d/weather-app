@@ -1,0 +1,123 @@
+.searching_place{
+    width: 650px;
+    height: 40px;
+    color: white;
+    border: none;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background: none;
+    .search_input{
+        width: 500px;
+        height: 100%;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.15);
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-left: none;
+        color: white ;
+    }
+    .search_input::placeholder{
+    color: white;
+    }
+    .search_input:focus{
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+    .search_icon{
+        width: 60px;
+        height: 40px;
+        padding: 10px 0px 5px 10px;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+        border-right: none;
+        background-color: rgb(255, 255, 255,0.15);
+        
+        img{
+            width: 20px;
+            height: 20px;
+            margin: 0;
+        }
+    }
+    .search_btn{
+        width: 70px;
+        height: 100%;
+        background-color: rgb(99, 29, 196);
+        font-size: 16px;
+        border-radius: 4px;
+        border: none;
+        color: white;
+        margin-left: 10px;
+    }
+}
+
+.result_container{
+    width: 526px;
+    height: auto;
+    position: absolute;
+    background-color: #262540;
+    border: 1px solid #302F4A;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display:  flex;
+    flex-direction: column;
+    color: white;
+    z-index: 2;
+    top: 50px;
+}
+
+.city_option{
+    width: 510px;
+    height: 39px;
+    padding: 10px 8px;
+    text-align: start;
+    border-radius: 8px;
+    background: none;
+    span{
+        font-size: 16px;
+
+    }
+}
+.city_option:hover{
+    background-color: #302F4A;
+    border: 1px solid #3C3B5E;
+}
+.close{
+    display: none;
+}
+
+
+
+.loading_container{
+    width: 526px;
+    height: 55px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    gap: 20px;
+    align-items: center;
+    .loading_icon {
+        animation: spin1 1s linear infinite;
+        width: 20px;
+        height: 29px;
+    }
+}
+
+
+@keyframes spin1 {
+    from { rotate: 0deg; }
+    to   { rotate: 360deg; }
+}
+
+@media (max-width:1024px) {
+    
+}
+
+@media (max-width:768px) {
+    .searching_place{
+        width: 350px;
+    }
+}

@@ -1,0 +1,86 @@
+.main_container {
+    width: 1440px;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    color: white;
+    margin-bottom: 20px;
+
+    .main_body {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        .body_search {
+            width: 100%;
+            height: auto;
+            padding-left: 30%;
+            margin-bottom: 30px;
+        }
+
+        .body_cards {
+            display: flex;
+            flex-direction: row;
+
+            .weather_cards {
+                display: flex;
+                flex-direction: column;
+                justify-items: center;
+                align-items: center;
+                padding-left: 100px;
+                gap: 15px;
+                width: 70%;
+
+                .main_footer {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    padding-left: 60px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    .main_container{
+        width: 768px;
+        .main_body .body_cards{
+            flex-direction: column;
+            align-items: center;
+        }
+        .main_body .body_search{
+            width: 100%;
+            padding-left: 60px;
+        }
+        .main_body .body_cards .weather_cards{
+            padding: 0;
+            width: 768px;
+        }
+        .main_body .body_cards .weather_cards .main_footer{
+            padding-left: 20px;
+            
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .main_container{
+        width: 375px;
+        .main_body .body_search{
+            padding-left:15px ;
+        }
+        .main_body .body_cards .weather_cards .main_footer{
+            padding: 0;
+            width: 375px;
+        }
+        .main_body .body_cards{
+            flex-direction: column;
+        }
+        .main_body .body_cards .weather_cards{
+            width: 375px;
+        }
+    }
+}

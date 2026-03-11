@@ -1,0 +1,101 @@
+.dropdown_menu{
+    width: 214px;
+    height: 412px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    position: absolute;
+    background-color:#262540;
+    color: white;
+    border: 1px solid #3C3B5E;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgb(2,1,44,0.32);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 6px 8px;
+    right: 0;
+    top: 70px;
+    z-index: 0;
+    visibility: hidden;
+    transform: scaleY(0);
+    transition: all 0.4s;
+    h4{
+        cursor: pointer;
+        margin: 0;
+        margin-top: 4px;
+    }
+    
+    .dropdown_list_wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        .dropdown_inner_container{
+            width: 100%;
+            display: flex;
+            gap: 4px;
+            flex-direction: column;
+            &:last-child{
+                hr{
+                    display: none;
+                }
+            }
+            span{
+                width: 100%;
+                display: block;
+                text-align: start;
+                color: rgb(255, 255, 255,0.3);
+                margin-top: 8px;
+
+            }
+            hr{
+            margin: 0;
+            width: 198px;
+            border: 1px solid #3C3B5E;
+            }
+    
+            li{
+            display: flex;
+            width: 198px;
+            height: 39px;
+            flex-direction: row;
+            text-align: start;
+            background: none;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            padding: 9px 5px 0 0;
+            border: 1px solid transparent;
+            &:hover{
+                background-color: rgb(240, 240, 240,0.1);
+                border-radius: 4px;
+                cursor: pointer;
+                transition: border-color .15s ease;
+            }
+            img{
+                width: 15px;
+                height: 15px;
+            }
+        }
+        
+        }
+        
+    }
+}
+.open{
+    visibility: visible;
+    z-index: 10;
+    transform: scaleY(1);
+
+}
+
+@media (max-width:1024px) {
+    .dropdown_menu{
+        height: 430px;
+        top: 100px;
+        h4{
+            margin-top: 10px;
+        }
+    }
+}

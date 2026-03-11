@@ -1,0 +1,78 @@
+.weather_card{
+    width: 800px;
+    height: 286px;
+    border-radius: 10px;
+    font-family:'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    background-image: url('../bg-today-large.svg');
+    color: white;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    .weather_card_left{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        h1{
+            margin: 0;
+        }
+        p{
+            opacity: 40%;
+        }
+    }
+    .weather_card_right{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
+        padding-right: 40px;
+        img{
+            width: 80px;
+            height: 80px;
+        }
+        span{
+            font-weight: normal;
+            font-size: 76px;
+        }
+    }
+
+}
+@media (max-width:1024px) {
+    .weather_card{
+        width: 720px;
+
+    }
+}
+@media (max-width:768px) {
+    .weather_card{
+        width: 343px;
+        height: 286px;
+        flex-direction: column;
+        border-radius: 20px;
+        .weather_card_left{
+            width: 100%;
+        }
+        .weather_card_left h1{
+            font-size: 28px;
+        }
+        .weather_card_right{
+            width: 100%;
+            padding-right: 15px;
+            img{
+                width: 120px;
+                height: 120px;
+            }
+            span{
+                font-size: 96px;
+            }
+        }
+    }
+}

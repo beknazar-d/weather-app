@@ -1,0 +1,21 @@
+.weather_list {
+    width: 30%;
+    display: flex;
+
+    li {
+        list-style: none;
+    }
+}
+@media (max-width:1024px) {
+    .weather_list{
+        width: 768px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 32px;
+    }
+}
+@media (max-width:768px) {
+    .weather_list{
+        width: 375px;
+    }
+}

@@ -1,0 +1,178 @@
+.hourly_forecast {
+    width: 400px;
+    height: 693px;
+    position: relative;
+    border-radius: 10px;
+    background-color:#302F4A;
+    margin-bottom: 20px;
+    overflow-y: scroll;
+
+    // Webkit (Chrome, Safari, Edge)
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        margin: 10px 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        transition: background 0.3s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        &:active {
+            background: rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    // Firefox
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
+    .forecast_header{
+        width: 100%;
+        height: auto;
+        position: sticky;  
+        top: 0;
+        background-color:#302F4A;
+        z-index: 1;
+        display: flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+        .day_selector{
+            width: 120px;
+            height: 37px;
+            position: relative;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(255, 255, 255,0.1);
+            align-items: center;    
+            padding: 8px 16px;
+            gap: 12px;
+            box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+            .selector_btn{
+                border: none;
+                background: none;
+                width: 120px;
+                height: 37px;
+                font-size: 16px;
+                cursor: pointer;
+                }
+                img{
+                    width: 12px;
+                    height: 18px;
+
+                }
+                .rotate{
+                    rotate: x 180deg;
+                }
+            }
+        }
+
+        .forecast_content{
+            height: auto;
+            width: 100%;
+            .list_wrapper{
+            display: flex;
+            gap: 16px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+        h3{
+            font-size: 16px;
+        }
+    }
+}
+
+.forecast_list_item{
+    width: 350px;
+    height: 60px;
+    position: relative;
+    display: flex;
+    background-color: #302F4A;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    background: rgb(255, 255, 255,0.15);
+    padding: 10px 16px 10px 12px;
+    border: 1px solid #3C3B5E;
+    img{
+        width: 40px;
+        height: 40px;
+    }
+    .list_item_left{
+        width: 150px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        
+    }
+    .list_item_grad{
+        float: right;
+        width: 100px;
+        height: 100%;
+        align-content: center;
+    }
+}
+
+.day_list{
+    width: 214px;
+    height: 313px;
+    position:absolute;
+    right: 10px;
+    top: 55px;
+    background-color: #302F4A;
+    border-radius: 12px;
+    border: 1px solid #3C3B5E;
+    padding:8px 8px ;
+    box-shadow: 0 8px 16px 0 rgb(2,1,44,0.32);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    visibility: hidden;
+    z-index: 0;
+    transform: scaleY(0);
+    .inner_list{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        gap: 4px;
+        .day_name{
+            width: 198px;
+            height: 39px;
+            border-radius: 8px;
+            padding: 10px 8px;
+            text-align: start;
+            &:hover{
+                background-color: #302F4A;
+                border-radius: 8px;
+                border: none ;
+                box-shadow: 0 8px 16px 0 rgb(2,1,44,0.32);
+            }
+        }
+    }
+}
+.open{
+    z-index: 2;
+    visibility: visible;
+    transform: scaleY(1);
+    transition: ease-in-out 0.3s;
+}
+@media (max-width:1024px) {
+    
+    .hourly_forecast{
+        width: 720px;
+    }
+}

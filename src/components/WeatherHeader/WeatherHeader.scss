@@ -1,0 +1,109 @@
+.main_header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+    margin-bottom: 20px;
+
+    .header_top {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .header_dropdown {
+            width: 119px;
+            height: 43px;
+            border: 1px solid rgb(149, 129, 129, 0.5);
+            border-radius: 8px;
+            background-color: #262540;
+            align-content: center;
+            padding: 0 5px;
+
+            img {
+                transform: rotateY('angle');
+            }
+        }
+
+        button {
+            background: none;
+            border: none;
+            padding: 0 6px;
+            margin: 0;
+        }
+
+        span {
+            font-size: 16px;
+        }
+    }
+
+    .header_text {
+        font-size: 38px;
+        color: white;
+    }
+}
+
+.header_dropdown .rotate {
+    rotate: x 180deg;
+    transition: rotate 0.3s ease;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(180deg); }
+}
+@keyframes backspin {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(-180deg);
+    }
+} 
+.backspin{
+    animation: backspin 0.8s linear;
+}
+.wheel {
+  animation: spin 0.8s linear ;
+}
+
+@media (max-width:1024px) {
+    .main_header{
+        gap: 20px;
+        padding: 30px 24px;
+    }
+    .header_text{
+        font-size: 52px;
+        text-align: center;
+    }
+    .header_dropdown{
+        span{
+            line-height: 28px;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .main_header{
+        width: 375px;
+        .header_top .header_dropdown{
+            height: 33px;
+            width: 89px;
+            padding: 0;
+            span{
+                font-size: 14px;
+            }
+            img{
+                width: 14px;
+                height: 14px;
+            }
+        }
+        .header_top{
+            .header_logo{
+                width: 137px;
+                height: 28px;
+            }
+        }
+    }
+}
