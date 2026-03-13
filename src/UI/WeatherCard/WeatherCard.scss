@@ -11,6 +11,17 @@
     justify-content: center;
     align-items: center;
     align-content: center;
+    .loading{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #3C3B5E;
+        img{
+            animation: spin1 1s linear infinite;
+        }
+    }
     .weather_card_left{
         width: 50%;
         height: 100%;

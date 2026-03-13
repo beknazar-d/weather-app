@@ -7,8 +7,11 @@ import rain from '../icon-drizzle.webp';
 import overcast from '../icon-overcast.webp';
 import partlycloudy from '../icon-partly-cloudy.webp';
 import storm from '../icon-storm.webp';
-const WCard =({location,data,img,grad})=>{
-    
+import loading from '../icon-loading.svg';
+import {selectWeatherStatus } from '../../weatherSlice';
+import { useSelector } from 'react-redux';
+const WCard = ({ location, data, img, grad }) => {
+    const status = useSelector(selectWeatherStatus);
     const getWeatherIcon = (code) => {
         if (code === 0) return sunny;
         if (code >= 1 && code <= 3) return overcast;
@@ -19,8 +22,12 @@ const WCard =({location,data,img,grad})=>{
         if (code >= 95) return storm;
         return cloud;
     };
-    return(
+    return (
         <div className='weather_card'>
+            {status === 'loading' ?
+                <div className='loading'><img src={loading} alt="loading-icon" />Loading...</div>
+                :
+                <>
             <div className='weather_card_left'>
                 <h1>{location?location:'Berlin, Germany'}</h1>
                 <p>{data?data:'Tuesday, Aug 5, 2026'}</p>
@@ -29,6 +36,8 @@ const WCard =({location,data,img,grad})=>{
                 <img src={getWeatherIcon(img)} alt="sun" />
                 <span>{grad?`${grad}°`:'20°'}</span>
             </div>
+                </>
+                        }
         </div>
     )
 };

@@ -3,6 +3,16 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    .cards_loading{
+        width: 300px;
+        height: 150px;
+        font-size: 26px;
+        img{
+            animation: spin1 1s linear infinite;
+            width: 50px;
+            height: 50px;
+        }
+    }
 }
 @media (max-width:1024px) {
     .mini_cards{
